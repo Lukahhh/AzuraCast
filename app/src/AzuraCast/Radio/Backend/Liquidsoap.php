@@ -162,6 +162,23 @@ class Liquidsoap extends BackendAbstract
             } else {
                 $ls_config[] = $playlist_var_name . ' = mksafe(input.http("'.$playlist->getRemoteUrl().'"))';
             }
+            
+            if ($playlist->getSource() === Entity\StationPlaylist::SOURCE_REMOTE_M3U) {
+                $playlist_file_contents = $playlist->export('m3u', true);
+                $playlist_file_path =  $playlist_path . '/' . $playlist_var_name . '.m3u';
+
+                file_put_contents($playlist_file_path, $playlist_file_contents);
+
+                $playlist_mode = $playlist->getOrder() === Entity\StationPlaylist::ORDER_SEQUENTIAL
+                    ? 'normal'
+                    : 'randomize';
+
+                $playlist_params = [
+                    'reload_mode="watch"',
+                    'mode="'.$playlist_mode.'"',
+                    '"'.$playlist_file_path.'"',
+                ];
+            
 
             if ($playlist->getType() === Entity\StationPlaylist::TYPE_ADVANCED) {
                 $ls_config[] = 'ignore('.$playlist_var_name.')';
