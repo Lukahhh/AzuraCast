@@ -164,8 +164,7 @@ class Liquidsoap extends BackendAbstract
             }
             
             if ($playlist->getSource() === Entity\StationPlaylist::SOURCE_REMOTE_M3U) {
-                $playlist_file_contents = $playlist->export('m3u', true);
-                $playlist_file_path =  $playlist_path . '/' . $playlist_var_name . '.m3u';
+                $ls_config[] = $playlist_var_name . ' = mksafe("'.$playlist.'")';
 
                 file_put_contents($playlist_file_path, $playlist_file_contents);
 
