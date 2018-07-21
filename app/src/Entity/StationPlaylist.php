@@ -84,6 +84,12 @@ class StationPlaylist
      * @var string|null
      */
     protected $remote_url;
+    
+     /**
+     * @Column(name="remote_m3u", type="string", length=255, nullable=true)
+     * @var string|null
+     */
+    protected $remote_m3u;
 
     /**
      * @Column(name="is_enabled", type="boolean")
