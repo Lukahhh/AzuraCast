@@ -99,6 +99,7 @@ return [
                         'label' => __('Source'),
                         'choices' => [
                             StationPlaylist::SOURCE_SONGS => '<b>' . __('Song-Based Playlist') .':</b> ' . __('A playlist containing media files hosted on this server.'),
+                            StationPlaylist::SOURCE_REMOTE_M3U => '<b>'.__('Remote M3U Playlist').':</b> ' . __('Instructs the station to run a playlist from a remote M3U.'),
                             StationPlaylist::SOURCE_REMOTE_URL => '<b>'.__('Remote URL Playlist').':</b> ' . __('A playlist that instructs the station to play from a remote URL.'),
                         ],
                         'default' => StationPlaylist::SOURCE_SONGS,
@@ -193,6 +194,22 @@ return [
 
             ]
         ],
+        
+                'source_'.StationPlaylist::SOURCE_REMOTE_M3U => [
+            'legend' => __('Remote M3U Playlist'),
+            'class' => 'source_fieldset',
+            'elements' => [
+
+                'remote_m3u' => [
+                    'text',
+                    [
+                        'label' => __('Remote M3U'),
+                    ]
+                ],
+
+            ]
+        ],
+
 
         'type_default' => [
             'legend' => __('General Rotation'),
