@@ -24,6 +24,7 @@ class StationPlaylist
 
     public const SOURCE_SONGS = 'songs';
     public const SOURCE_REMOTE_URL ='remote_url';
+    public const SOURCE_REMOTE_M3U ='remote_m3u';
 
     public const ORDER_RANDOM = 'random';
     public const ORDER_SEQUENTIAL = 'sequential';
